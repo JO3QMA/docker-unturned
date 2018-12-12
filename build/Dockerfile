@@ -45,6 +45,6 @@ RUN set -x \
  && ./steamcmd.sh + login anonymous +quit \
  && chmod +x /srv/entrypoint.sh
 
-WORKDIR ${UNT_DIR}}
+WORKDIR ${UNT_DIR}
 EXPOSE 27015-27017/udp
 ENTRYPOINT [ "/srv/entrypoint.sh" ]
