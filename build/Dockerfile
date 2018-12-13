@@ -11,7 +11,11 @@ RUN set -x \
  && rm -rf /etc/localtime \
  && ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
  && apt-get update \
- && apt-get install -y tzdata \
+ && apt-get install -y tzdata gnupg2 ca-certificates \
+ && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
+ && echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list \
+ && apt-get update \
+ && apt-get install -y mono-devel mono-complete \
  && echo "Install module required by SteamCMD" \
  && apt-get install -y locales \
       lib32gcc1\
@@ -31,10 +35,6 @@ RUN set -x \
       libgcc1:i386 \
       zlib1g:i386 \
       libncurses5:i386 \
-      mono-reference-assemblies-2.0 \
-      mono-devel \
-      libmono-cil-dev \
-      mono-runtime \
       libc6:i386 \
       libgl1-mesa-glx:i386 \
       libxcursor1:i386 \
