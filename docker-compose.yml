@@ -3,7 +3,7 @@ services:
   unturned:
     build: ./build/
     volumes:
-      - ./data:/srv/unturned
+      - ./data/unturned:/srv/unturned
     environment:
       - ID=user
       - PASS=pass
@@ -12,3 +12,10 @@ services:
       - "27015:27015/udp"
       - "27016:27016/udp"
       - "27017:27017/udp"
+  mariadb:
+    image: mariadb:latest
+    volumes: 
+      - ./data/mariadb:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: unturned
