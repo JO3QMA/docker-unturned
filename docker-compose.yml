@@ -1,5 +1,5 @@
 version: "3.1"
-services: 
+services:
   unturned:
     build: ./build/
     volumes:
@@ -14,8 +14,8 @@ services:
       - "27017:27017/udp"
   mariadb:
     image: mariadb:latest
-    volumes: 
+    volumes:
       - ./data/mariadb:/var/lib/mysql
-    environment: 
+    environment:
       MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: unturned
